@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Segoe UI Symbol"
+}
+.Logo{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.Logo .welcome{
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.Logo .wlcmText{
+    margin: 15px;
+    font-size: 30px;
+}
+.Logo .tagline{
+    font-weight: 10;
+    font-size: 20px;
+}
+.reciter-select{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+}
+.reciter-select .heading{
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+.reciter-select .btn-row{
+    text-align: center;
+}
+.reciter-select .btn-row button{
+    padding: 10px;
+    margin-left: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.hide{
+    display: none;
+}
