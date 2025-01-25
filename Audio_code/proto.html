@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proto-Progrss-Bar thingy</title>
+</head>
+<body>
+    <div class="audio-container">
+        <div class="audio">
+    <div class="controls">
+        <button class="audio-state">Play</button>
+        <input id="progressBar" type="range" value="1" min="0">
+        <audio id="Audio">
+            <source src="1.mp3" type="audio/mpeg">
+        </audio>
+        <span id="time">0:00</span>
+    </div>
+</body>
+<style>
+    .audio-container{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .controls{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+</style>
+<script>
+    const audio = document.getElementById("Audio")
+    const progressBar = document.getElementById("progressBar")
+    const playPauseBtn = document.querySelector(".audio-state")
+
+    audio.addEventListener("loadedmetadata", () => {
+        progressBar.max = Math.floor(audio.duration)
+    })
+
+    playPauseBtn.addEventListener("click", () => {
+        if(audio.paused){
+            audio.play()
+            playPauseBtn.textContent = "Pause"
+        }
+        else{
+            audio.pause()
+            playPauseBtn.textContent = "Play"
+        }
+    })
+
+    audio.addEventListener("timeupdate", () => {
+        progressBar.value = Math.floor(audio.currentTime)
+        if(audio.ended){
+            playPauseBtn.textContent = "Play"
+            progressBar.value = "0";
+        }
+    })
+    progressBar.addEventListener("input", () => {
+        audio.currentTime = progressBar.value;
+    })
+</script>
+</html>
