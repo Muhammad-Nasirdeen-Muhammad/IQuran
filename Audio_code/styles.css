@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container{
+    display: flex;
+    flex-flow: wrap;
+}
+.container:first-child{
+    margin-left: 10px;
+}
+.container .audio{
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    margin-right: 2px;
+}
+.container .audio:hover{
+    position: relative;
+    top: -4px;
+}
+.container .audio .poster{
+    margin-bottom: 10px;
+}
+.container .audio .poster img{
+    width: 220px;
+    border-radius: 10px;
+}
+.container .audio .name{
+    margin-bottom: 10px;
+}
+.container .audio .name{
+    text-align: center;
+}
+.container .audio .control{
+    display: flex;
+}
+.container .audio .control button{
+    margin-right: 10px;
+    padding: 5px;
+}
+.container .audio .control p{
+    margin-top: 5px;
+}

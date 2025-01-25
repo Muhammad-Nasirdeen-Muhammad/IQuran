@@ -1,0 +1,52 @@
+<div class="audio-player">
+    <button id="play-pause">Play</button>
+    <input id="progress" type="range" value="0">
+    <span id="time">0:00</span>
+    <audio id="audio">
+      <source src="1.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+  </div>
+  
+  <style>
+    .audio-player {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    #progress {
+     /* flex: 1;*/
+    }
+  </style>
+  
+  <script>
+    const audio = document.getElementById('audio');
+    const playPauseButton = document.getElementById('play-pause');
+    const progressBar = document.getElementById('progress');
+    const timeLabel = document.getElementById('time');
+  
+    playPauseButton.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        playPauseButton.textContent = 'Pause';
+      } else {
+        audio.pause();
+        playPauseButton.textContent = 'Play';
+      }
+    });
+  
+    audio.addEventListener('timeupdate', () => {
+      progressBar.value = (audio.currentTime / audio.duration) * 100 || 0;
+      const minutes = Math.floor(audio.currentTime / 60);
+      const seconds = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+      timeLabel.textContent = `${minutes}:${seconds}`;
+    });
+  
+    progressBar.addEventListener('input', (e) => {
+      audio.currentTime = (e.target.value / 100) * audio.duration;
+    });
+  </script>
+  
